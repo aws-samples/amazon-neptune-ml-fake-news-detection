@@ -34,9 +34,12 @@ Graph Machine Learning with Amazon Neptune ML involves five main steps:
 5. **Querying the ML Model using Gremlin** – You can use extensions to the Gremlin query language to query predictions from the inference endpoint.
 
 ## Running Code
-1. As an initial step, run through `create-graph-dataset.ipynb` notebook to generate the graph dataset.
-2. Use the `load-graph-dataset.ipynb` notebook to load the graph dataset to an Amazon Neptune cluster.
-3. Use the `detect-fake-news-neptune-ml.ipynb` notebook to run through steps 1 to 5 above of graph machine learning with Amazon Neptune ML an interactive way.
+1. As an initial step, run through `1-create-graph-dataset.ipynb` notebook to generate the graph dataset.
+2. Use the `2-load-graph-dataset.ipynb` notebook to load the graph dataset to an Amazon Neptune cluster.
+3. Use the `3-detect-fake-news-neptune-ml.ipynb` notebook to run through steps 1 to 5 above of graph machine learning with Amazon Neptune ML an interactive way.
+4. Use the `4-inductive-inference.ipynb` notebook to go through an example of real-time inductive inference with Amazon Neptune ML.
+
+If needed, you can run the `for-reference_clear-neptune-database.ipynb` notebook to clear the Amazon Neptune database. This can be helpful if you run the sample and then want to create your own data in Amazon Neptune. 
 
 Note: Use this [QuickStart CloudFormation template](https://docs.aws.amazon.com/neptune/latest/userguide/machine-learning-quick-start.html) to quickly spin up a `graph-notebook`, an associted Neptune cluster, and set up all the configurations needed to work with Neptune ML in a `graph-notebook`. To run the `create-graph-dataset.ipynb` notebook select a NotebookInstanceType of `ml.c5.9xlarge` to ensure you have enough memory to load the `UserFeature.mat` file.
 
