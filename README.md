@@ -34,6 +34,27 @@ Graph Machine Learning with Amazon Neptune ML involves five main steps:
 5. **Querying the ML Model using Gremlin** – You can use extensions to the Gremlin query language to query predictions from the inference endpoint.
 
 ## Running Code
+### Deploy the infrastructure
+Note: Use this [CDK code](https://github.com/aws-samples/aws-cdk-wrapper-for-amazon-neptune-export-for-fake-news-detection) to quickly spin up the required resources, including:
+* an Amazon Sagemaker notebook where you can run this code
+* an associated Amazon Neptune cluster
+* all the configurations needed to work with Neptune ML in the Amazon Sagemaker. 
+
+The CDK code is specifically designed to work for this repository, so you shouldn't have any errors when running the notebooks. Note that to run the `1-create-graph-dataset.ipynb` notebook, a NotebookInstanceType of `ml.c5.9xlarge` is configured already to ensure you have enough memory to load the `UserFeature.mat` file.
+
+### Clone this into the notebook instance
+Once you have deployed the above CDK code, 
+1. navigate to the [Sagemaker console](https://console.aws.amazon.com/sagemaker/) 
+2. expand the Notebook section on the left hand side. 
+3. Click notebook instances
+4. Find the notebook deployed by the CDK. It should start with `aws-neptune-notebook-for-neptunedbcluster`. If you don't see any, check to ensure you are in the correct region and the CDK has finished deploying.
+5. Click Open Jupyer Lab
+6. Launch a new terminal
+7. Run `cd Sagemaker && git clone https://github.com/aws-samples/amazon-neptune-ml-fake-news-detection.git`
+8. You should see the folder `amazon-neptune-ml-fake-news-detection` on the left hand side
+9. Click into the folder, and you will see the notebooks described below as well as additional files and folders. Follow the steps below to run the notebooks.
+
+### Run the notebooks
 1. As an initial step, run through `1-create-graph-dataset.ipynb` notebook to generate the graph dataset.
 2. Use the `2-load-graph-dataset.ipynb` notebook to load the graph dataset to an Amazon Neptune cluster.
 3. Use the `3-detect-fake-news-neptune-ml.ipynb` notebook to run through steps 1 to 5 above of graph machine learning with Amazon Neptune ML an interactive way.
@@ -41,7 +62,6 @@ Graph Machine Learning with Amazon Neptune ML involves five main steps:
 
 If needed, you can run the `for-reference_clear-neptune-database.ipynb` notebook to clear the Amazon Neptune database. This can be helpful if you run the sample and then want to create your own data in Amazon Neptune. 
 
-Note: Use this [QuickStart CloudFormation template](https://docs.aws.amazon.com/neptune/latest/userguide/machine-learning-quick-start.html) to quickly spin up a `graph-notebook`, an associted Neptune cluster, and set up all the configurations needed to work with Neptune ML in a `graph-notebook`. To run the `create-graph-dataset.ipynb` notebook select a NotebookInstanceType of `ml.c5.9xlarge` to ensure you have enough memory to load the `UserFeature.mat` file.
 
 ## Security
 
